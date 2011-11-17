@@ -1,0 +1,40 @@
+<style>
+.wym_html textarea {height: 500px !important;}
+.wym_iframe iframe {height: 500px !important;}
+</style>
+
+<script type="text/javascript" src="/js/wymeditor/jquery.wymeditor.min.js"></script>
+<script type="text/javascript" src="/js/wymeditor/jquery.ui.resizable.js"></script>
+<script type="text/javascript" src="/js/wymeditor/plugins/hovertools/jquery.wymeditor.hovertools.js"></script>
+<script type="text/javascript" src="/js/wymeditor/plugins/resizable/jquery.wymeditor.resizable.js"></script>
+
+<script type="text/javascript" >
+
+jQuery(function() {
+    jQuery('#project_business_plan').wymeditor({
+skin : 'silver',
+lang : 'fr',
+ postInit: function(wym) {
+
+            wym.hovertools();          //activate hovertools
+            wym.resizable();           //and resizable plugins
+        }
+});
+});
+
+</script>
+
+<div class="edit-business-plan">
+  <h2>Page d'edition du business plan</h2>
+  <%= form_for :project, :url => {:action => :submit} do |f| %>
+
+    <%= f.hidden_field :id %>
+  
+  <%= f.text_area :business_plan %>
+  <p>
+    <%= f.submit  "Confirmer les modifications", :class => 'wymupdate' %>
+  </p>
+<% end %>
+
+
+</div>

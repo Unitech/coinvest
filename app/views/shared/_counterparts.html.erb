@@ -1,0 +1,31 @@
+  <% if user_is_owner? and @project.personalized_reward == true and defined? @editable and @project.submited == false %>
+    <%= link_to 'Editer', edit_counterparts_path, :class => 'edit_link' %>
+  <% end %>
+
+<div class="counterparts-choice">
+  <% if counterparts.length == 0 %>
+    <p>Il n'y a pas d'offre pour le moment</p>
+  <% else %>
+    <% counterparts.each do |c| %>
+      <div class="each-counter" remain="<%= (c.limit_products != nil and c.limit_products == 0) ? 'none' : ''%>">
+	<div class="left-counter">
+	  <input type="radio" value="<%= c.id %>"> <span class="counter-price">Pour <%= c.bearing %> € ou plus</span>
+	</div>
+	<div class="right-counter">
+	  
+	  <%= c.description %>
+	  <% if c.limit_products != nil and c.limit_products != 0 %>
+	    <br/><b>Produits restant</b> : <%= c.limit_products %>
+	  <% elsif c.limit_products != nil and c.limit_products == 0 %>
+	    <br/><span style="color : red;">Plus de produit restant de ce type</span>
+	  <% end %>
+	</div>
+      </div>
+    <% end %>
+    <div class="submit-btn" url="<%= buy_counterpart_path %>">
+      <a href="" >
+	<%= image_tag "confirm.png" %>
+      </a>
+    </div>
+  <% end %>
+</div>

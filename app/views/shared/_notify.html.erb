@@ -1,0 +1,6 @@
+
+<div id="notificator"></div>
+
+<% if flash[:notice] %>
+  <script>notify('<%= flash[:notice] %>');</script>
+<% end %>

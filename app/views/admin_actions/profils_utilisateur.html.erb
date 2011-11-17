@@ -1,0 +1,22 @@
+<h1>Liste utilisateurs inscris</h1>
+
+<%= link_to "<<< Back", admin_actions_index_path %>
+<br/>
+
+<table border="1" style="width : 100%;">
+  <tr>
+    <th>Nom</th>
+    <th>Projets menés</th>
+    <th>Crédits</th>
+    <th>Accéder au rapport</th>
+  </tr>
+  <% @users.each do |u| %>
+    <tr>
+      <td><%= u.f_name + ' ' + u.l_name %></td>
+      <td><%= u.projects.length %></td>
+      <td><%= u.credits %></td>
+      <td><%= link_to "Rapport", admin_actions_profil_spe_path(u.id) %></td>
+    </tr>
+  <% end %>
+</table>
+  

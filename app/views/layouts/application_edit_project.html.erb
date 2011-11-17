@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Coinvest | <%= @page_title || Coinvest %></title>
+
+    <%= render :partial => 'shared/meta' %>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+
+    <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+    
+  </head>
+
+  
+  <body>
+    <%= render :partial => 'shared/notify' %>
+    <%= render :partial => 'shared/header' %>
+    <%= render :partial => 'shared/menu' %>
+    
+    <div id="content" class="layout-edit">
+      <div class="container_16">
+	<div class="grid_16 back-edit-project">
+	  <%= link_to "<<< Retourner au preview du projet", edit_show_path(:proj_name => params[:proj_name], :id => params[:id]) %>
+	</div>
+	<center>
+	  <h2><%= params[:proj_name] %></h2>
+	</center>
+	<%= yield %>
+      <div class="grid_16 back-edit-project">
+	<br/>
+	<%= link_to "<<< Retourner au preview du projet", edit_show_path(:proj_name => params[:proj_name], :id => params[:id]) %>
+	<br/>
+	<br/>
+      </div>
+      </div>
+    </div>
+    
+    <%= render :partial => 'shared/footer' %>
+  </body>
+</html>

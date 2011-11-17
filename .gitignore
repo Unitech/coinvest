@@ -1,0 +1,12 @@
+tmp/**/*
+db/development.sqlite3
+db/production.sqlite3
+db/test.sqlite3
+log/**/*
+public/assets/**/*
+public/system/**/*
+.sass-cache/**/*
+.bundle/config
+vendor/*
+log/development.log
+log/production.log

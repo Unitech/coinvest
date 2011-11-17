@@ -1,0 +1,8 @@
+<h2>Checkin</h2>
+
+<i>(sera remplacé par le systeme de la banque)</i><br/><br/>
+<%= form_tag profil_credits_add_path, :class => 'form' do %>
+  <%= label_tag "Credits à ajouter" %>
+  <%= text_field_tag "add_credits" %> Euros <br/>
+  <%= submit_tag "Ajouter" %>
+<% end %>

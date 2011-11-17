@@ -1,0 +1,28 @@
+<!-- Used in project/show -->
+
+<!-- Description des differents tabs -->
+<ul>
+  <li>
+    <a href="#tabs-1">Description</a>
+  </li>
+  <li>
+    <a href="#tabs-2">Investisseurs</a>
+  </li>
+  <li>
+    <a href="#tabs-3">Commentaires</a>
+  </li>
+
+  <% if @project.blog_enabled == true %>
+    <li>
+      <a href="#tabs-4">Blog</a>
+    </li>
+  <% end %>
+
+  <% if @project.capital_stock_type == true %>
+    <li>
+      <a href="#tabs-5">Business Plan</a>
+    </li>
+  <% end %>
+
+  
+</ul>

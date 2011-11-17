@@ -1,0 +1,70 @@
+
+@import "main.css.scss";
+
+#generic_form {
+    margin : 40px 0 40px 0;
+    text-align:center;
+    border : 1px solid $color_grey;
+    padding : 15px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px; 
+    -khtml-border-radius: 4px; 
+    border-radius: 4px;
+}
+
+.login_form {
+    margin-left : 50px;
+    margin-top : 20px;
+    height : 470px;
+    @include nice_form();
+    label{
+	margin-bottom : 5px;
+	font-weight : bold;
+	display:block;
+    }	
+
+    h2 { text-align : center; }
+    p {margin-bottom : 0px;} 
+    .login, .subscribe {
+	height : 370px;
+	padding : 20px 40px 40px 40px;
+	border : 1px solid $color_grey;
+	@include rounded(3px);
+    }
+    .or {
+	margin-top : 190px;
+	font-weight : bold;
+	font-size : 30px;
+	padding : 0 20px 0 20px;
+    }
+    .subscribe {
+	ul {
+	    
+	    li {
+		margin-left : 10px;
+		margin-bottom : 10px;
+	    }
+	}
+	input[type=submit], input[type=button] {
+	    text-align : center;
+	    padding : 3px 12px 3px 12px;
+	    margin-top : 8px;
+	    background-color : $black_grey;
+	    color : $color_orange;
+	    font-weight : bold;
+	    font-size : 1.1em;
+	    cursor : pointer;
+	    border : 1px solid black;	    
+	    @include rounded(3px);
+	}
+    }
+   
+}
+
+
+
+.spe_form {
+    .field_with_errors {
+	color : red;
+    }
+}

@@ -1,0 +1,43 @@
+
+<div class="general-informations">
+
+<%= form_for(@user, :url => {:action => :general_informations_submit}, :html => {:class => 'form'}) do |f| %>
+  
+  <%= render :partial => "shared/error", :locals => {:object => @user } %>
+
+
+  <p><%= f.label :f_name, 'Prénom', %>
+  <%= f.text_field :f_name %></p>
+
+  
+  <%= f.label :l_name, 'Nom' %>
+  <%= f.text_field :l_name %>
+  
+  
+  <%= f.label :address, 'Adresse' %>
+  <%= f.text_field :address %>
+  
+  <%= f.label :postal_code, 'Code postal' %>
+  <%= f.text_field :postal_code %>
+  
+  <%= f.label :city, 'Ville' %>
+  <%= f.text_field :city %>
+  
+  <%= f.label :country, 'Pays' %>
+  <%= f.text_field :country %>
+  
+
+  <p><%= f.label :email %>
+  <%= f.email_field :email %></p>
+
+  <p><%= f.label :password, "Password (laisser le champs vide si vous ne voulez pas le modifier)" %>
+  <%= f.password_field :password %></p>
+
+  <p><%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %></p>
+  
+
+  <p><%= f.submit "Update" %></p>
+<% end %>
+
+</div>

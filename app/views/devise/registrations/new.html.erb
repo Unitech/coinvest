@@ -1,0 +1,126 @@
+<br/>
+<center><h1>Inscrivez-vous</h1></center>
+
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :class => 'form')  do |f| %>
+  <%= devise_error_messages! %>
+
+  <div class="spe_form">
+    <table>
+      <tr>
+	<th>
+	  <h3>Vos identifiants</h3>
+	</th>
+      </tr>
+      <tr>
+	<th>
+	  <%= f.label :f_name, 'Prénom *', %>
+	</th>
+	<td>
+	  <%= f.text_field :f_name %>
+	</td>
+      </tr>
+      <tr>
+	<th>
+	  <%= f.label :l_name, 'Nom *' %>
+	</th>
+	<td>
+	  <%= f.text_field :l_name %>
+	</td>
+      </tr>
+      <tr>
+	<th>
+	  <%= f.label :email, 'Email *' %>
+	</th>
+	<td>
+	  <%= f.email_field :email %>
+	</td>
+      </tr>
+      <tr>
+	<th>
+	  <%= f.label :password, 'Mot de passe *' %>
+	</th>
+	<td>
+	  <%= f.password_field :password %>
+	</td>
+      </tr>
+      <tr>
+	<th>
+	  <%= f.label :password_confirmation, 'Confirmation mot de passe *' %>
+	</th>
+	<td>
+	  <%= f.password_field :password_confirmation %>
+	</td>
+      </tr>
+      <tr>
+	<th>
+      <br/>
+      <br/>
+	  <h3>Informations personnelles</h3>
+	</th>
+      </tr>
+      <tr>
+	<th>
+	  <%= f.label :birth_date, 'Date de naissance' %>
+	</th>
+	<td>
+	  <%= f.date_select :birth_date, :start_year => 1920 %>
+	</td>
+      </tr>
+      <tr>
+	<th>
+	  <%= f.label :address, 'Adresse' %>
+	</th>
+	<td>
+	  <%= f.text_field :address %>
+	</td>
+      </tr>
+      <tr>
+	<th>
+	  <%= f.label :postal_code, 'Code postal' %>
+	</th>
+	<td>
+	  <%= f.text_field :postal_code %>
+	</td>
+      </tr>
+      <tr>
+	<th>
+	  <%= f.label :city, 'Ville' %>
+	</th>
+	<td>
+	  <%= f.text_field :city %>
+	</td>
+      </tr>
+      <tr>
+	<th>
+	  <%= f.label :country, 'Pays' %>
+	</th>
+	<td>
+	  <%= f.text_field :country %>
+	</td>
+      </tr>
+    </table>
+    
+    <%= f.check_box :receive_newsletter, :checked => true %> Je souhaite recevoir <b>les actus de Coinvest</b> 
+    <br/>
+    <input id="check-box-condition" type="checkbox" >
+    J'accepte <a href="<%= plus_conditions_generales_path %>" target="_blank" style="text-decoration : underline;">les conditions générales</a> 
+    <br/>
+    <br/>
+    <p><%= f.submit "S'enregister !", :id => 'submit-form' %></p>
+<% end %>
+</div>
+
+<script>
+
+$(document).ready(function() {
+$('.user_new').submit(function(ev) {
+
+if ($('#check-box-condition').attr('checked') == undefined) {
+notify('Vous devez accepté les conditions générales');
+ev.preventDefault();
+}
+
+});
+});
+</script>
+

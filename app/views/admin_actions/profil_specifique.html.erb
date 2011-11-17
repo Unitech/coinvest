@@ -1,0 +1,88 @@
+
+<h1><center>Rapport du profil de <strong><%= @user.f_name %> <%= @user.l_name %></strong></center></h1>
+
+<%= link_to "<<< Back", admin_actions_index_path %>
+<style>
+  table {
+  width : 100%;
+  }
+</style>
+
+<h3>Infos générales</h3>
+<table border="1">
+  <tr>
+    <th>Date inscription</th>
+    <td><%= @user.created_at %></td>
+  </tr>
+  <tr>
+    <th>Date de modif de profil</th>
+    <td><%= @user.updated_at %></td>
+  </tr>
+  <tr>
+    <th>Nationalité</th>
+    <td><%= @user.nationality %></td>
+  </tr>
+
+  <tr>
+    <th>Email</th>
+    <td><%= @user.email %></td>
+  </tr>
+  <tr>
+    <th>Adresse</th>
+    <td><%= @user.address %></td>
+  </tr>
+  <tr>
+    <th>Code postal</th>
+    <td><%= @user.postal_code %></td>
+  </tr>
+  <tr>
+    <th>Ville</th>
+    <td><%= @user.city %></td>
+  </tr>
+  <tr>
+    <th>Crédits</th>
+    <td><%= @user.credits %></td>
+  </tr>
+</table>
+
+<h3>Projets menés</h3>
+
+<table border="1">
+  <tr>
+    <th>Titre</th>
+    <th>Date de créa</th>
+    <th>Date update</th>
+    <th>Crédits rapportés</th>
+    <th>Projet soumis ?</th>
+    <th>Projet validé ? </th>
+    <th>Accés</th>
+  </tr>
+<% @user.projects.each do |p| %>
+  <tr>
+    <td><%= p.title %></td>
+    <td><%= p.created_at %></td>
+    <td><%= p.updated_at %></td>
+    <td><%= p.pourcentage_realise %></td>
+    <td><%= p.submited %></td>
+    <td><%= p.validated %></td>
+    <td><%= link_to "Accés", p.get_url %></td>
+  </tr>
+<% end %>
+</table>
+
+<h3>Historique des crédits</h3>
+
+  <table border="1">
+    <tr>
+      <th>Type</th>
+      <th>Valeur</th>
+      <th>Date</th>
+    </tr>
+    <% @historic.each do |h| %>
+      <tr>
+	<td><%= h.historic_type %></td>
+	<td><%= h.value %>€</td>
+	<td><%= h.created_at %></td>
+      </tr>
+    <% end %>
+  </table>

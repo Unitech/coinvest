@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<!-- Created by htmlize-1.37 in css mode. -->
+<html>
+  <head>
+    <title>main.css.scss</title>
+    <style type="text/css">
+    <!--
+      body {
+        color: #000000;
+        background-color: #e5e5e5;
+      }
+      .function-name {
+        /* font-lock-function-name-face */
+        color: #0000ee;
+        font-weight: bold;
+      }
+      .keyword {
+        /* font-lock-keyword-face */
+        color: #00cdcd;
+        font-weight: bold;
+      }
+      .type {
+        /* font-lock-type-face */
+        color: #00cd00;
+      }
+      .variable-name {
+        /* font-lock-variable-name-face */
+        color: #cdcd00;
+      }
+
+      a {
+        color: inherit;
+        background-color: inherit;
+        font: inherit;
+        text-decoration: inherit;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    -->
+    </style>
+  </head>
+  <body>
+    <pre>
+<span class="keyword">@import</span> "variable";
+<span class="keyword">@import</span> "function";
+
+body{ 
+    <span class="variable-name">background:</span>#f8f8f8;
+    <span class="variable-name">font:</span>13px Trebuchet MS, Arial, Helvetica, Sans-Serif;
+    <span class="variable-name">color:</span>#333;
+    <span class="variable-name">line-height:</span>160%;
+    <span class="variable-name">margin:</span>0;
+    <span class="variable-name">padding:</span>0;
+    a {
+        text-decoration<span class="function-name">:none</span>;
+        color:<span class="keyword">#f30</span>;
+    }
+    <span class="variable-name">a:</span>hover{
+        color:<span class="keyword">#999</span>;
+    }                   
+}
+
+<span class="type">.header</span> {
+     <span class="variable-name">background :</span> url('/assets/images/head-back.jpg');
+    <span class="variable-name">padding-top :</span> 10px;
+    <span class="variable-name">padding-bottom :</span> 0px;
+    <span class="variable-name">height :</span> 60px;
+    <span class="type">.login_header_form</span> {
+        text-align : right;
+        color : white;
+        padding : 12px 0px 0px 0;
+        <span class="type">.my-profil-link</span> {
+            font-size : 12px;
+        }
+        <span class="keyword">#log-btn</span> {
+            padding-left : 280px;
+        }
+        input {
+            font-size : 10px;
+            padding : 5px;
+        }
+    }
+}
+
+<span class="type">.header-menu</span> {
+    <span class="variable-name">text-align :</span> left;
+    <span class="variable-name">height :</span> 25px;
+    <span class="variable-name">padding-top :</span> 5px;
+    <span class="variable-name">padding-bottom :</span> 5px;
+    <span class="variable-name">background :</span> url('/assets/images/menu.jpg');
+    ul
+    {
+        display : inline-block;
+        margin : 2px 10px 0 0 ;
+        list-style-type: none;
+        padding: 0px;
+    }
+    li {
+        display : inline;
+        margin : 0 17px 0 0;
+
+    }
+    a {
+        color : white;
+        font-weight : bold;
+        padding : 3px 5px 3px 5px;
+    }
+    <span class="type">.selected</span> {
+        color : black;
+        background-color : <span class="keyword">#EA8606</span>;
+        @include rounded(3px);
+    }
+    <span class="variable-name">a:</span>hover {
+        color : black;
+        background-color : <span class="keyword">#EA8606</span>;
+        @include rounded(3px);
+    }
+
+}
+
+<span class="type">.content</span> {
+    <span class="variable-name">padding-top :</span> 20px;
+    <span class="variable-name">padding-bottom :</span> 20px;
+    <span class="type">.content-data</span> { 
+        
+    }
+    <span class="type">.right-bar</span> {
+
+    }
+}
+
+
+<span class="type">.generic-content</span> {
+    <span class="variable-name">margin :</span> -1px;
+    <span class="variable-name">padding :</span> 10px;
+    <span class="variable-name">border :</span> 1px solid $color_grey;
+    <span class="keyword">@include</span> rounded(5px);
+}
+
+
+<span class="type">.footer</span> {    
+    <span class="variable-name">padding-top :</span> 10px;
+    <span class="variable-name">border-top :</span> 2px solid $color_grey;
+    <span class="variable-name">font-size :</span> 10px;
+    h6 {
+        color : <span class="keyword">#989898</span>;
+        opacity : 0<span class="type">.9</span>;
+        font-size : 17px;
+        margin-bottom : 8px;
+    }
+    
+}
+</pre>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+
+#errorExplanation {
+    margin-top : 10px;
+    margin-bottom : 10px;
+    border : 1px solid red;
+    padding-left : 10px;
+    padding-top : 10px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px; 
+    -khtml-border-radius: 4px; 
+    border-radius: 4px;
+}
+
+
+  
+#notificator{
+    display : none;
+    position : fixed;
+    top : 15px;
+    right : 15px;
+    font-weight : bold;
+    padding : 15px;
+
+    padding-left : 40px;
+    padding-right : 40px;
+    z-index : 25;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    background-color : #ea5b0c;
+}
+

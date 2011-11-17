@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Coinvest | <%= @page_title || Coinvest %></title>
+
+    <%- render :partial => 'shared/debug' %>
+	
+    <%= render :partial => 'shared/meta' %>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+
+    <%= javascript_tag "window._token = '#{form_authenticity_token}'" %>
+   
+  </head>
+
+  <body>
+    <%= render :partial => 'shared/notify' %>
+    <%= render :partial => 'shared/header' %>
+    <%= render :partial => 'shared/menu' %>
+    
+    <div class="more">
+      <div class="container_16">
+
+	
+	<div class="grid_12 more_content">
+	  <%= yield %>
+	</div>
+
+	<div class="grid_4 menu">
+	  <h3>D'autres questions ?</h3>
+	  <div class="type">Par mail</div>
+	  <%= form_tag '/mail_us', :class => 'form'  do %>
+	  <%= text_field_tag 'entreprise_name', nil, :size => 25%><br/>
+	  <%= email_field_tag 'email_f', nil, :size => 25 %><br/>
+	  <%= text_area_tag 'message_f', nil, :rows => 10, :cols => 25 %><br/>
+	  <%= submit_tag "Envoi" %>
+	  <% end %>
+	</p>
+      <br/>
+
+      <div class="type">Ou appellez-nous</div><div class="number">01.25.69.21.23</div></p>
+	
+	<script>
+	  set_auto_text($('#entreprise_name'), 'Nom/entreprise');
+	  set_auto_text($('#email_f'), 'Votre email');
+	  set_auto_text($('#message_f'), 'Message');
+	</script>
+	</div>
+
+      </div>
+    </div>
+    
+    
+    <%= render :partial => 'shared/footer' %>
+    
+  </body>
+</html>

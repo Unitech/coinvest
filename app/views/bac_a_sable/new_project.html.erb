@@ -1,0 +1,16 @@
+<%= javascript_include_tag "project/new.js" %>
+
+<%= render :partial => 'shared/text/create' %>
+
+<div class="step_1">
+  <h2><%= @title_intro_project %></h2>
+  <div class="description">
+    <%= raw @intro_project %>
+  </div>
+
+  <%= render :partial => 'form', :locals => { :project => @project, :project_type => 'counterparts' } %>
+
+</div>
+
+
+

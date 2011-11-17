@@ -1,0 +1,18 @@
+
+
+<div class="prefix_5 grid_6 suffix_5">
+<div id="generic_form">
+
+<h2>Mot de passe oublié</h2>
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post }) do |f| %>
+  <%= devise_error_messages! %>
+
+  <p><%= f.label :email %><br />
+  <%= f.email_field :email %></p>
+
+  <p><%= f.submit "Send me reset password instructions" %></p>
+<% end %>
+
+
+</div>
+</div>

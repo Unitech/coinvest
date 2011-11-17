@@ -1,0 +1,26 @@
+/*
+ * This is a manifest file that'll automatically include all the stylesheets available in this directory
+ * and any sub-directories. You're free to add application-wide styles to this file and they'll appear at
+ * the top of the compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require variable
+ *= require function
+ *= require main
+
+ *= require bac_a_sable
+ *= require devise
+ *= require input
+ *= require jquery-ui-1.8.14.custom
+ *= require projects
+ *= require pagination
+ *= require misc
+ *= require profil-content
+ *= require 960/960_16_col
+ *= require 960/main
+ *= require 960/reset
+ *= require 960/text
+ *= require plugins/tipsy
+*/
+
+

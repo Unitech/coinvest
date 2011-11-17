@@ -1,0 +1,19 @@
+<div class="prefix_3 grid_10 suffix_3">
+  <div class="generic-content">
+    <br/>
+    <h3><center>Récapitulation</center></h3>
+    <p>
+      Projet : <b><%= @counterpart.project.title %></b><br/>
+      Description de la contrepartie : <b><%= @counterpart.description %></b><br/>
+      Coût en crédit : <b><%= @counterpart.bearing %></b>
+    <p>
+      <center>
+	<div class="submit-btn">
+	  <a href="<%= confirm_counterpart_path(@counterpart) %>" >
+	    <%= image_tag "confirm.png" %>
+	  </a>
+	</div>
+      </center>
+      <br/>
+  </div>
+</div>

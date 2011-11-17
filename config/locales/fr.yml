@@ -1,0 +1,128 @@
+
+fr:
+  hello: "Hello world"
+  will_paginate:
+    previous_label: "&#8592; Page précédente"
+    next_label: "Page suivante &#8594;"
+    page_gap: "&hellip;"
+
+  date:
+    formats:
+      # Use the strftime parameters for formats.
+      # When no format has been given, it uses default.
+      # You can provide other formats here if you like!
+      default: "%d-%m-%Y"
+      short: "%b %d"
+      long: "%B %d, %Y"
+
+    day_names: [Dimance, Lundi, Mardi, Mercredi, Jeudi, Vendredi, Samedi]
+    abbr_day_names: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+
+    # Don't forget the nil at the beginning; there's no such thing as a 0th month
+    month_names: [~, Janvier, Fevrier, Mars, Avril, Mai, Juin, Juillet, Aout, Septembre, Octobre, Novembre, Decembre]
+    abbr_month_names: [~, Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+    # Used in date_select and datetime_select.
+    order:
+      - :day
+      - :month
+      - :year
+
+  time:
+    formats:
+      default: "%a, %d %b %Y %H:%M:%S %z"
+      short: "%d %b %H:%M"
+      long: "%B %d, %Y %H:%M"
+    am: "am"
+    pm: "pm"
+
+
+# Used in array.to_sentence.
+  support:
+    array:
+      words_connector: ", "
+      two_words_connector: " et "
+      last_word_connector: ", et "
+
+  datetime:
+    distance_in_words:
+      half_a_minute: "half a minute"
+      less_than_x_seconds:
+        one:   "moins d'1 seconde"
+        other: "moins de %{count} secondes"
+      x_seconds:
+        one:   "1 second"
+        other: "%{count} seconds"
+      less_than_x_minutes:
+        one:   "moins de a minute"
+        other: "moins de %{count} minutes"
+      x_minutes:
+        one:   "1 minute"
+        other: "%{count} minutes"
+      about_x_hours:
+        one:   "environ 1 heure"
+        other: "environ %{count} heures"
+      x_days:
+        one:   "1 jour"
+        other: "%{count} jours"
+      about_x_months:
+        one:   "environ 1 mois"
+        other: "environ %{count} mois"
+      x_months:
+        one:   "1 month"
+        other: "%{count} months"
+      about_x_years:
+        one:   "environ un an"
+        other: "environ %{count} ans"
+      over_x_years:
+        one:   "plus d'un an"
+        other: "over %{count} years"
+      almost_x_years:
+        one:   "almost 1 year"
+        other: "almost %{count} years"
+    prompts:
+      year:   "Annee"
+      month:  "Mois"
+      day:    "Jour"
+      hour:   "Heure"
+      minute: "Minute"
+      second: "Secondes"
+
+      # Attributes names common to most models
+  #attributes:
+    #created_at: "Created at"
+    #updated_at: "Updated at"
+
+  # Active Record models configuration
+  activerecord:
+    errors:
+      messages:
+        taken: "est déjà pris"
+        record_invalid: "Erreur de validation : %{errors}"
+        # Append your own errors here or at the model/attributes scope.
+
+      # You can define own errors for models or model attributes.
+      # The values :model, :attribute and :value are always available for interpolation.
+      #
+      # For example,
+      #   models:
+      #     user:
+      #       blank: "This is a custom blank message for %{model}: %{attribute}"
+      #       attributes:
+      #         login:
+      #           blank: "This is a custom blank message for User login"
+      # Will define custom blank validation message for User model and
+      # custom blank validation message for login attribute of User model.
+      #models:
+
+    # Translate model names. Used in Model.human_name().
+    #models:
+      # For example,
+      #   user: "Dude"
+      # will translate User model name to "Dude"
+
+    # Translate model attribute names. Used in Model.human_attribute_name(attribute).
+    #attributes:
+      # For example,
+      #   user:
+      #     login: "Handle"
+      # will translate User attribute "login" as "Handle"

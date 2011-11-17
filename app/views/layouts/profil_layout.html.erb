@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <title>Coinvest - Profil | <%= @page_title || Coinvest %></title>
+
+    <%- render :partial => 'shared/debug' %>
+	
+    <%= render :partial => 'shared/meta' %>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
+   
+  </head>
+
+  <body>
+    <%= render :partial => 'shared/notify' %>
+    <%= render :partial => 'shared/header' %>
+    <%= render :partial => 'shared/menu' %>
+    
+    <div class="profil-content">
+      <div class="container_16">
+	<div class="grid_4">
+	  <%= render_navigation :level => 2..3, :expand_all => true  %>
+	</div>
+	<div class="profil-internal-content">
+	  <div class="grid_12">
+	    <%= yield %>
+	  </div>
+	</div>
+      </div>
+    </div>
+    
+    <%= render :partial => 'shared/footer' %>
+    
+  </body>
+</html>

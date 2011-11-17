@@ -1,0 +1,80 @@
+<!-- It use the home_layout ! -->
+
+<%= render :partial => 'shared/text/home' %>
+
+<%= javascript_include_tag 'home/home.js' %>
+
+<div class="main-page">
+
+  <div class="head-info">
+    <div class="container_16">
+      <span class="internal">
+
+	<span class="follow-us">
+	  <a href="http://twitter.com/Coinvest_fr" class="twitter-follow-button" data-width="150px" data-show-count="false" data-lang="fr">Suivre @Coinvest_fr</a>
+	  <script src="http://platform.twitter.com/widgets.js" type="text/javascript"></script>
+	</span>
+
+	<!--<span class="on-the-blog">News </span>-->
+	<span class="content">
+	  <%= Rails.cache.read('@twit') %>
+	</span>
+
+      </span>
+    </div>
+  </div>
+
+  <div class="intro" onclick="window.location = '<%= new_choice_path %>'">
+    <div class="container_16">
+      <div class="grid_5">
+	<span class="steps">1</span> <%= @banniere_idee %>
+      </div>
+      <div class="grid_5">
+	<span class="steps">2</span> <%= @banniere_fonds %>
+      </div>
+      <div class="grid_5">
+	<span class="steps">3</span> <%= @banniere_createur %>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="home-main">
+    <div class="container_16">
+      <!-- SLIDER : http://www.scriptiny.com/2008/12/javascript-slideshow/ -->
+      <div class="project shares">
+	<div class="pres">
+	  <div class="title"><%= link_to 'Les entreprises', list_projects_path(:type => 'entreprise') %></div>
+	  <div class="content">
+	    <%= @description_entreprise %>
+	  </div>
+
+	</div>
+	<div class="listing-min-proj">
+	  <% @enterprise.each do |p| %>
+	    <%= render :partial => 'shared/project_min_descr_home', :locals => { :project => p } %>
+	  <% end %>
+	</div>
+
+      </div>
+      
+      <div class="project counterparts">
+	<div class="pres">
+	  <div class="title"><%= link_to 'Les projets', list_projects_path(:type => 'projets') %></div>
+	  <div class="content">
+	    <%= @description_projet %>
+	  </div>
+	</div>
+
+	<div class="listing-min-proj">
+	  <% @project.each do |p| %>
+	    <%= render :partial => 'shared/project_min_descr_home', :locals => { :project => p } %>
+	  <% end %>
+	</div>
+
+      </div>
+
+    </div>
+  </div>
+
+</div>

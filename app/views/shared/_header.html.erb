@@ -1,0 +1,66 @@
+
+
+<script>
+  $(document).ready(function() {
+  $('#hidden-content').css('display', 'none');
+  $('#login_btn').click(function() {
+  $('#hidden-content').toggle();
+  $('#show-content').toggle();
+  });
+  });
+</script>
+
+
+<div class="header">
+
+  <div class="container_16">
+    <div class="grid_10">
+      <span class="logo">
+	<a href="<%= root_path %>">
+	  <%= image_tag("coinvest_40.png") %>
+	</a>
+      </span>
+    </div>
+    
+    <div class="grid_6 login_header_form  button_links">
+      <div id="show-content">
+
+	<% if user_signed_in? == false %>
+	  <div id="log-btn">
+	    <a href="#" id="login_btn">Login</a> | 
+	    <a href="<%= user_omniauth_authorize_path(:facebook) %>">
+	      <%= image_tag("login/login.png") %>
+	    </a>
+	  </div>
+	<% else %>
+	  <a href="<%= profil_index_path %>" id="you-are-logged">
+    	    <%= current_user.f_name %> <%= current_user.l_name %>
+	  </a>
+	  
+	<% end %>
+
+      </div>
+      <div id="hidden-content" style="display:none;">
+	<% if user_signed_in? == false %>
+	  <%= form_for "user", :url => user_session_path , :html => {:id => 'header_form'} do |f| %>
+    	  <%= f.text_field :email, :size => 26, :class => 'inputText' %>
+    	  <%= f.password_field :password, :size => 26, :class => 'inputText' %>
+    	  <%= f.submit('Connexion', :class => 'login_button' ) %>
+    	<% end %>
+       <% end %>
+      </div>
+
+    <div class="my-profil-link">
+      <% if user_signed_in? %>
+	<%= link_to "Mon compte", profil_index_path %> |
+	<!-- <%= link_to "Mes projets", edit_list_path %> | -->
+	<%= link_to 'Me déconnecter', destroy_user_session_path %>
+      <% else %>
+	<%= link_to 'S\'inscrire', new_user_registration_path %> | 
+    	<%= link_to 'Mot de passe oublié ?', new_password_path('user') %>
+      <% end %>
+    </div>
+    
+</div>	
+</div>
+</div>

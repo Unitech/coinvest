@@ -1,0 +1,47 @@
+<div class="counterparts-project">
+   
+  <div class="add-part grid_8">
+    <h3>Ajouter des contreparties</h3>
+
+    <%= form_for :counterpart, :url => {:action => :submit_counterpart} do |f| %>
+    
+    <div class="fields">
+      <p>
+	<%= f.label :bearing, "Palier (>$) " %>
+	<%= f.text_field :bearing, :size => 12 %> <b>€</b>
+      </p>
+      
+      <p>
+	<%= f.label :description, "Description de l'offre" %>
+	<%= f.text_area :description %>
+      </p>
+      
+      <p>
+	<%- f.label :limit_products, "Limite de produits" %>
+	<%- f.text_field :limit_products %>
+      </p>
+      
+      
+      <%= f.submit "Ajouter un palier", :class => 'submit' %>
+    </div>
+   </div>
+  <% end %>
+
+<div class="counterparts-listing grid_7">
+  <h3>Liste des contreparties déjà crées</h3>
+  
+  <% if @counterparts.length == 0 %>
+    <span style="color : red; font-weight : bold;">Pas de contreparties crées pour le moment.</span>
+    <br/>    <br/>    <br/>
+  <% else %>
+    <% @counterparts.each do |c| %>
+      <div class="each">
+	<h4> > à <%= c.bearing %></h4>
+	<b>Description</b> : <%= c.description %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+  
+
+</div>

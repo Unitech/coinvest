@@ -1,0 +1,106 @@
+
+<!-- Contenu des tabs -->
+<div id="tabs-1">
+  <% if user_is_owner? and defined? @editable and @project.submited == false %>
+    <%= link_to 'Editer', edit_one_project_path, :class => 'edit_link' %>
+  <% end %>
+
+  <div class="image-proj">
+    <% if @project.project_image? and @project.you_tube == nil %>
+      <%= image_tag @project.project_image.url(:medium) %>
+    <% elsif @project.project_image? %>
+      <%- # YOUTUBE ENABLED %>
+      <a href="#t" id="video">
+	<div id="play">
+	</div>
+	<%= image_tag @project.project_image.url(:medium) %>
+	
+      </a>
+      <style>
+	
+      </style>
+      <script>
+	function play(id)
+    {
+       var html  = '';
+
+       html += '<object >';
+       html += '<param name="movie" value="http://www.youtube.com/v/'+id+'"></param>';
+       html += '<param name="autoplay" value="1">';
+       html += '<param name="wmode" value="transparent"></param>';
+       html += '<embed width="640" height="360" src="http://www.youtube.com/v/'+id+'&autoplay=1" type="application/x-shockwave-flash" wmode="transparent" ></embed>';
+       html += '</object>';
+
+       return html;
+    };
+
+
+	$().ready(function() {
+	$('#video').click(function() {
+	$(this).html(play('SPI8niO08wQ'));
+	});
+	});
+      </script>
+    <% else %>
+      <div class="empty-640">
+	<div class="content">
+	  640 x 360
+	</div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="share">
+    <%= render :partial => 'shared/share', 
+	:locals => {
+	  :text_shared => "Investissez : #{@project.title} sur Coinvest !", 
+	  :url => "http://localhost:3000/#{@project.title}" } 
+	%>      
+  </div>
+
+  <div class="content-project">
+    <div class="about">
+      À propos
+    </div>
+    <div class="internal-content">
+      <p><%= @project.description.html_safe %></p>
+    </div>
+  </div>
+
+
+</div>
+
+<div id="tabs-2">
+  <p><h2>Listing des investisseurs</h2></p>
+  
+  <ul>
+    <% if @users.present? %>
+      <% @users.each do |u| %>
+	<li>
+	  <%= u.f_name + ' ' + u.l_name %>
+	</li>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<div id="tabs-3">
+  <p><h2>Listing des commentaires</h2></p>
+</div>
+
+<% if @project.blog_enabled == true %>
+  <div id="tabs-4">
+    <p>Si admin connecté possibilité d'ajouter des news</p>
+    <p>Sinon display des news</p>
+  </div>
+<% end %>
+
+<% if @project.capital_stock_type == true %>
+  <div id="tabs-5">
+  <% if user_is_owner? and defined? @editable and @project.submited == false %>
+    <%= link_to 'Editer', edit_business_plan_path, :class => 'edit_link' %>
+  <% end %>
+  <p><h2>Business plan vulguarisé</h2></p>
+  <%= sanitize @project.business_plan %>
+  </div>
+<% end %>

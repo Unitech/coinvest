@@ -1,0 +1,135 @@
+<%= javascript_include_tag "project/show.js" %>
+
+<div class="show-project" id="<%= @project.id %>">
+  
+  <div class="head-info">
+    <div class="container_16">
+      <span class="on-the-blog">News </span>
+      <% if @editable != nil  %>
+	<% if @project.submited == true and @project.validated == false %>
+	  <span class="content submit-to-coinvest">
+	    Votre projet est en cours d'admission ! - (<input type="submit" id="submit-for-validation" value="Annuler"/>)
+	  </span>
+	<% elsif @project.validated == true %>
+	  <span class="content">
+	    Votre projet à bien été publié, son url est : <%= link_to 'Acceder a mon projet', @project.get_url %>
+	  </span>
+	<% else %>
+	  <span class="content submit-to-coinvest">
+	    Une fois la présentation de votre projet prêt soumettez le à Coinvest :
+	    <input type="submit" id="submit-for-validation" value="Soumettre le projet"/>
+	  </span>
+	<% end %>
+      <% else %>
+	  <span class="content">
+	    Projet lancé !
+	  </span>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="show-intro">
+    <div class="container_16">
+      <!-- P1 -->
+      <div class="grid_10 top-left">
+	<h1 class="title">
+	  <%= @project.title %>
+	</h1> 
+	<div class="short-descr">
+	  <%= @project.short_descr %>
+	</div>
+	
+	<div class="intro-tabs">
+	  <%= render :partial => '/shared/project/tabs' %>
+	</div>
+      </div>
+      <!-- P2 -->
+      <div class="grid_6 top-right">
+	
+	<!-- P2.1 -->
+	<div class="founded">
+	  <span class="indice">
+	    58%
+	  </span>
+	  <br/>
+	  <span class="text-if">
+	    récolté
+	  </span>
+	</div>
+	<!-- ! P2.1 -->
+
+	<!-- P2.2 -->
+	<div class="meta">
+	  <div class="lefter">
+	    <div class="money">
+	      <div class="received">
+		<span class="euro">0 €</span><span class="min"> recu</span>
+	      </div>
+	      <div class="asked">
+		<span class="euro">
+		  <%= @project.wish_money %> € 
+		</span>
+		<span class="min"> demandé</span> 
+	      </div>
+	      <div class="date">
+		<%= image_tag 'time-icon.png' %> <%= time_ago_in_words(@project.date_end_wish) %><span class="min"> restant</span>
+	      </div>
+	    </div>
+	  </div>
+	  <!-- ! P2.2 -->
+	</div>
+      </div>
+    </div>
+  </div>
+  
+  <!-- P II -->
+  
+  <div class="project-content">
+    <div class="container_16">
+      <div class="left-project-content grid_11">
+	<%= render :partial => '/shared/project/tabs_content' %>
+	<!-- P II.1 -->
+	
+      </div>
+      <!-- ! P II.1 -->
+      
+      
+      <!-- P II.2 -->
+      <div class="right-project-content grid_5">
+	
+	<!-- Si projet de parts -->
+	<% if @project.capital_stock_type == true %>
+	  <div class="right-show shares-invest">
+	    <center>
+	      <span class="title-invest">
+		Parts
+	      </span>
+	    </center>
+	    <div class="si-text">
+	      <div class="si-shares">60%</div> 
+	      <div class="sis-bottom">de parts disponible</div>
+	      <br/>
+	      Le prix de 5% est 500 Eur
+	    </div>
+	    
+	  </div>
+	<% else %>
+	  <div class="right-show counterparts-invest">
+	    <center>
+	      <span class="title-invest">
+		Contreparties
+	      </span>
+	    </center>
+	    
+	    
+	    <%= render :partial => 'shared/counterparts', :locals => {:counterparts => @project.counterparts} %>
+	    
+	  </div>
+	<% end %>
+      </div>
+      <!-- ! P II.2 -->
+    </div>
+  </div>
+  <!-- ! P II -->  
+</div>
+

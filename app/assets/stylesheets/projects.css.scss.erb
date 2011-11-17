@@ -1,0 +1,573 @@
+/*
+ * SHOW on project
+ */
+
+@import "main.css.scss";
+
+.empty-320 {
+    height : 180px;
+      width : 320px;
+    background-color : #cccccc;
+    position : relative;
+    .content {
+	padding-left :119px;
+	padding-top : 80px;
+	color : #969696;
+	
+    }
+}
+
+.empty-160 {
+    height : 120px;
+      width : 230px;
+    background-color : #cccccc;
+    position : relative;
+    .content {
+	padding-left :83px;
+	padding-top : 52px;
+	color : #969696;
+	
+    }
+}
+
+.empty-640 {
+    height : 360px;
+    width : 640px;
+    background-color : #cccccc;
+    position : relative;
+    .content {
+	padding-left : 285px;
+	padding-top : 170px;
+	color : #969696;
+	
+    }
+}
+
+.list-projects {
+    .menu {
+	margin : 0 -2px 0 -2px;
+	min-height : 980px;
+	border-left : 1px dotted $color_grey;
+	.content-menu {
+	    padding : 20px 0 0 0px;
+	    ul {
+		list-style-type : none;
+		margin: 0; 
+		padding: 0;
+		li {
+		    margin: 0; 
+		    padding: 0;
+		}
+	    }
+	    h3 {
+		border-bottom : 1px dotted $color_grey;
+		padding-left : 12px;
+	    }
+	    a {
+		display : inline-block;
+		font-weight : bold;
+		text-align : left;
+		margin-left : 10px;
+		width : 185px;
+		padding : 3px 12px 3px 12px;
+	    }
+
+	    ul.subnav{
+		li {
+		    .selected {
+			
+			/* background-color : $black_grey; */
+			/* color : $color_orange; */
+			/* font-weight : bold; */
+			/* font-size : 1.1em; */
+			/* cursor : pointer; */
+			/* border : 1px solid black;	     */
+			/* @include rounded(3px); */
+			color : black;
+		    }
+		    .subsubnav {
+			font-size : 12px;
+			padding-left : 20px;
+			color : red;
+			.selected {
+			    color : black;
+			}
+		    }
+		}
+	    }
+	}
+    }
+    
+    .list-content {
+	padding-top : 10px;
+	.project_pagination_bottom {
+	    margin-top : 15px;
+	    text-align : center;
+	}
+	
+	.title-content {
+	    margin-left : 20px;
+	    margin-bottom : 10px;
+	    border : 2px solid $color_grey;
+	    padding : 11px;
+	    h3 {
+		text-align : center;
+		font-weight : bold;
+		margin-bottom : 0px;
+		font-size : 16px;
+	    }
+	    @include rounded(4px);
+	}
+	.project-unity {   
+	    margin-bottom : 20px;
+	    height : 280px;
+	    border : 1px solid $color_grey;
+	    
+	    @include rounded(5px);
+	    .pu-image {
+		margin : 0 auto;
+		width : 320px;
+		position : relative;
+		#play {
+		    position : absolute;
+		    background-image : asset_url("play-nop.png", image);
+		    height : 74px;
+		    width : 72px;
+		    top : 60px;
+		    left : 125px;
+		    z-index : 50;
+		}
+		#play:hover {
+		    top : 58px;
+		    background-image : asset_url("play-hover.png", image);   
+		}
+
+	    }
+	    .metadata {
+		background : asset_url("css/intro-show.png", image);
+		height : 100px;
+		.meta {
+		    height : 90px;
+		    position : relative;
+		    padding : 10px;
+		    .pu-title {
+			font-size : 17px;
+			color : $color_orange;
+			font-weight : bold;
+		    }
+		    .pu-author {
+			position : absolute;
+			right : 5%;
+			top : 13%;
+			color : white;
+			font-size : 11px;
+		    }
+		    .pu-time {
+			position : absolute;
+			bottom : 20%;
+			left : 3%;
+
+			color : white;
+			font-size : 11px;
+		    }
+		}
+	    }
+	}
+    }
+    .project-unity:hover {
+	opacity : 0.8;
+    }
+
+}
+
+#investir-btn {
+    position : fixed;
+    right : 2%;
+    top : 2%;
+}
+
+// Misc TABS jquery ui
+
+.ui-tabs {
+    padding : 0;
+    position : none;
+    zoom : none;
+}
+
+.ui-corner-all {
+    border : none;
+}
+
+.ui-tabs .ui-tabs-panel {
+    padding : 0;
+    padding-top : 10px;
+}
+.ui-widget-header {
+    border : none;
+    background : none;
+}
+.ui-state-default {
+    background-color : white;
+}
+
+.show-project {
+    min-height : 1000px;
+
+    .head-info {
+	margin-top : 12px;
+	.on-the-blog {
+	    display : inline-block;
+	    font-weight : bold;
+	    border-right : 1px dotted $color_grey;
+	    padding-right : 7px;
+	}
+	.content {
+	    margin-left : 10px;
+	}
+	.submit-to-coinvest {
+	    input[type=submit] {
+		text-align : center;
+		padding : 3px 12px 3px 12px;
+		margin-top : 8px;
+		background-color : $black_grey;
+		color : $color_orange;
+		font-weight : bold;
+		font-size : 1.1em;
+		cursor : pointer;
+		border : 1px solid black;	    
+		@include rounded(3px);
+	    }
+	    
+	    input[type=submit]:hover {   
+		background-color : $color_orange;
+		color : $black_grey;
+	    }
+	}
+    }
+    .show-intro {
+	margin-top : 15px;
+	height : 150px;
+	width : 100%;
+	background : asset_url("css/intro-show.png", image);
+	.top-left {
+	    position : relative;
+	    .title {
+		margin-top : 25px;
+		font-size : 2em;
+		margin-bottom : 0px;
+		color : $color_orange;
+	    }
+	    .short-descr {
+		margin-top : 3px;
+		font-size : 1.2em;
+		color : #fff;
+	    }
+	    .intro-tabs {
+		@include normalize_list();
+		position : absolute;
+		top : 120px;
+		left : 0px;
+		/* ul { */
+		/*     background-color : $color_grey; */
+		/*     @include rounded_top(5px); */
+		/*     padding : 6px 10px 6px 10px; */
+		    
+		/*     a { */
+		/* 	color : white; */
+		/*     } */
+		/*     li { */
+			
+		/* 	display:inline-block; */
+		/*     } */
+		/* } */
+	    }
+	}
+	.top-right {
+	    color : white;
+	    position : relative;
+
+	    .founded {
+		position : absolute;
+		top : 40px;
+		right : 250px;
+		width : 70px;
+		.indice {
+		    font-size : 2.5em;
+		    font-weight : bold;
+		}
+		.text-if {
+		    position : absolute;
+		    left : 8px;
+		}
+	    }
+	    
+	    .meta {
+		position : absolute;
+		right : 0px;
+		top : 28px;
+		.lefter {
+		    border-left : 1px dotted $color_grey;
+		    padding-left : 10px;
+		    .euro {
+			font-size : 1.5em;
+		    }
+		    .received, .asked {
+			border-bottom : 1px dotted $color_grey;
+		    }
+		    .date {
+			margin-top : 5px;
+			padding-bottom : 6px;
+		    }
+		}
+	    }
+	}
+    }
+
+    .project-content {
+	color : red;
+	.left-project-content {
+
+	    .image-proj {
+		position : relative;
+		margin-top : 20px;
+		#play {
+		    position : absolute;
+		    background-image : asset_url("play-nop.png", image);
+		    height : 74px;
+		    width : 72px;
+		    top : 142px;
+		    left : 280px;
+		    z-index : 9999;
+		}
+		#play:hover {
+		    top : 140px;
+		    left : 280px;
+		    background-image : asset_url("play-hover.png", image);   
+		}
+	    }
+	    .share {
+		margin-top : 10px;
+	    }
+	    .content-project {
+		margin-top : 10px;
+		.about {
+		    font-size : 1.6em;
+		    border-bottom : 1px dotted $color_grey;
+		}
+		.internal-content {
+		    margin-top : 12px;
+		}
+	    }
+	}
+	// P II.2
+	.right-project-content {
+	    color : white;
+	    margin-top : 30px;
+	    .right-show {
+		border : 1px solid $color_grey;
+		background : asset_url("css/back-invest2.png", image);
+		padding : 5px;
+		min-height : 200px;
+		@include rounded(5px);
+		.title-invest {
+		    margin-top : 5px;
+		    display : inline-block;
+		    font-size : 18px;
+		    font-weight : bold;
+		}
+		.si-text {
+		    margin-top : 20px;
+		    text-align : center;
+		    .si-shares {
+			font-size : 25px;
+			font-weight : bold;
+			display : block;
+			text-align : center;
+			.sis-bottom {
+			    display : block;
+			}
+		    }
+		}
+	    }
+	    .shares-invest {
+	
+	    }
+	    .counterparts-invest {
+		padding-bottom : 35px;
+	    }
+	}
+	// Edit link when user is logged to watch
+	a.edit_link {
+	    background-color : $color_orange;
+	    color : black;
+	    font-weight : bold;
+	    font-size : 14px;
+	    padding : 2px 8px 2px 8px;
+	    @include rounded(8px);
+	    
+	}    
+	a.edit_link:hover {
+	    background-color : black;
+	    color : $color_orange;
+	    color : red;
+	}
+    }
+
+    .counterparts-choice {
+	margin-top : 20px;
+    	.each-counter {
+	    cursor : pointer;
+    	    border-bottom : 2px solid $color_grey;
+    	    padding-bottom : 6px;
+	    margin-bottom : 9px;
+
+
+    	    .left-counter {
+		.counter-price {
+		    font-size : 15px;
+		    color : white;
+		    font-weight : bold;
+		}
+
+    	    }
+    	    .right-counter {
+		
+		
+    	    }
+    	}
+    	.submit-btn {
+    	    padding-top : 20px;
+    	    width : 120px;
+    	    margin : 0 auto;
+    	}
+    }
+
+    /* .show-header { */
+    /* 	//border-bottom : 1px solid $color_grey; */
+    /* 	padding-bottom : 5px; */
+    /* 	margin-bottom : 10px; */
+    /* 	.descr { */
+
+    /* 	    padding-bottom : 15px; */
+	
+    /* 	    .top-right { */
+    /* 		margin-top : 10px; */
+    /* 		font-size : 15pt; */
+    /* 		#min { */
+    /* 		    font-size : 11px; */
+    /* 		} */
+    /* 		.money { */
+    /* 		} */
+    /* 		.date { */
+    /* 		} */
+    /* 	    } */
+    /* 	} */
+    /* 	.medium { */
+    /* 	    .image-proj { */
+    /* 		padding-top : 15px; */
+    /* 		padding-bottom : 15px; */
+    /* 		width : 70%; */
+    /* 		margin : 0 auto; */
+    /* 	    } */
+    /* 	    .tabs { */
+    /* 		border-bottom : 1px solid $color_grey !important; */
+    /* 		.ui-tabs-nav {    */
+    /* 		    border : none; */
+    /* 		    background : none; */
+    /* 		}		 */
+    /* 	    } */
+    /* 	} */
+    /* } */
+    /* .show-left { */
+	
+    /* } */
+    /* .show-right { */
+    /* 	border : 1px solid $color_grey; */
+    /* } */
+}
+
+.counterparts {
+    .each {
+	padding : 5px;
+	border : 1px solid $color_grey;
+	@include rounded(5px);
+	margin-bottom : 10px;
+    }
+}
+
+.do-the-choice {
+
+    margin-top : 10px;
+    height : 370px;
+    h2 {margin-bottom : 40px;}    
+    font-size : 1.0em;
+    .choice {
+	position : relative;
+	.enterprise {
+	    width : 315px;
+	    position : absolute;
+	    top : 0%;
+	    right : 10%;
+	}
+	.projecto {
+	    width : 315px;
+	    position : absolute;
+	    top : 0%;
+	    left : 10%; 
+	}
+	.element {
+	    padding-top : 20px;
+	    width : 300px;
+	    height : 60px;
+	    border : 2px solid $color_orange;
+	    background-color : $black_grey;
+	    @include rounded(12px);
+	    font-size : 2em;
+	    text-align : center;
+	    font-weight : bold;
+	}
+	.text {
+	    color : black;
+	    margin-top : 15px;
+	    font-weight : bold;
+	    text-align : center;
+	    .subtext {
+		font-weight : normal;
+		margin-top : 10px;
+		font-size : 90%;
+	    }
+	}
+
+    }
+}
+
+.create_proj {
+    .rules_create_proj {
+    	border : 1px solid $color_grey;
+	padding : 10px;
+	@include rounded(4px);
+	.internal_rules {
+	    
+	}
+    }
+    .button_create {
+	margin-top : 20px;
+	text-align :center;
+    }
+}
+
+.listing-proj {
+    .proj {
+	border : 1px solid $color_grey;
+	padding : 5px;
+	margin-bottom : 5px;
+	.edit {
+	    text-align : right;
+	}
+    }
+}
+
+
+.submenu-edit {
+    list-style-type : none;
+}

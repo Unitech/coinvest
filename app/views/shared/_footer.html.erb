@@ -1,0 +1,24 @@
+
+<%= render :partial => 'shared/text/footer' %>
+
+<div class="footer" class="topline">
+  <div class="container_16">
+
+    <div class="grid_4 suffix_1">
+      <h6><%= link_to "Tout sur Coinvest", plus_comment_ca_marche_path %></h6>
+      <%= raw @part_one %>
+    </div>
+
+    <div class="grid_4 suffix_1 prefix_1">
+      <h6><%= link_to "Suivez Coinvest sur Facebook", 'http://twitter.com/#!/Coinvest_fr', :target => 'blank' %></h6>
+      <%= raw @part_two %>
+    </div>
+
+
+    <div class="grid_4 prefix_1">
+      
+      <h6><%= link_to "Suivez Coinvest sur Twitter", 'http://twitter.com/#!/Coinvest_fr', :target => 'blank' %></h6>
+      <%= raw @part_three %>
+    </div>
+  </div>
+</div>

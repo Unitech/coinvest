@@ -1,0 +1,30 @@
+
+<%= render :partial => 'shared/text/preview_before_create' %>
+
+<div class="create_proj">
+
+  <h2><%= @title_preview %></h2>
+
+  <p><%= @sub_title_preview %></p>
+
+  <div class="rules_create_proj">
+    <h3><%= @title_rules_preview %></h3>
+
+    <div class="internal_rules">
+      <ul>
+	<%= raw @rules_preview %>
+      </ul>
+    </div>
+  </div>
+
+  
+  <div class="button_create">
+    <h1>
+      <a href="<%= @url %>">
+	<%= image_tag 'bac/deposer.png' %>
+      </a>
+    </h1>
+
+  </div>
+
+</div>

@@ -1,0 +1,47 @@
+<%= render :partial => 'shared/text/begin_create' %>
+
+<div class="do-the-choice">
+  <center>
+    <h2>Créez votre business</h2>
+  </center>
+
+  <div class="choice">
+
+
+    <a href="<%= create_new_proj_path(:type => 'entreprise') %>">
+      <div class="enterprise">
+	<div class="element">
+	  <div class="inter-text">
+	    Entreprise
+	  </div>
+	</div>
+	
+	<div class="text">
+	  <%= @top_create_company %>
+	  <div class="subtext">
+	    <%= @create_company %>
+	  </div>
+	</div>
+      </div>
+    </a>
+
+    <a href="<%= create_new_proj_path(:type => 'projet') %>">
+      <div class="projecto">
+	<div class="element">
+	  <div class="inter-text">
+	  Projet
+	  </div>
+	</div>
+      <div class="text">
+	<%= @top_create_project %>
+	<div class="subtext">
+	  <%= @create_project %>
+	</div>
+      </div>
+    </div>
+    </a>
+    
+    
+  </div>
+
+</div>

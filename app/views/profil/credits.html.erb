@@ -1,0 +1,29 @@
+<h2>Récapitulatif de mes crédits</h2>
+
+<p>Vous avez <b><%= current_user.credits %></b> € de crédits.</p>
+<%= link_to 'Créditer mon compte', profil_credits_checkin_path %>
+
+<br/>
+<br/>
+<div class="credits-historic">
+  <h2>Historique de vos crédits</h2>
+  
+  
+  <table border="1">
+    <tr>
+      <th>Type</th>
+      <th>Valeur</th>
+      <th>Date</th>
+    </tr>
+    <% @historic.each do |h| %>
+      <tr>
+	<td><%= h.historic_type %></td>
+	<td><%= h.value %>€</td>
+	<td><%= h.created_at %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+
+
+

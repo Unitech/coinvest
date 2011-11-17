@@ -1,0 +1,40 @@
+<script>
+  function validate(id, title) {
+  var answer = confirm("Vous allez confirmer le projet " + title + ". Etes vous sur ?");
+  if (answer) {
+	$.ajax({
+	    type : "POST",
+	    url : '<%= admin_actions_confirm_path %>',
+	    data : {
+		'id' : id,
+		'authenticity_token' : _token
+	    },
+	    success : function(data) {
+    alert('Opération réussie.');
+  window.location = window.location;
+	    }
+	});
+  }
+  else {
+  alert('Opération annulée');
+  }
+}
+</script>
+
+<h1><center>Projets confirmé par les utilisateurs</center></h1>
+<table border="1" style="width : 100%">
+  <tr>
+    <th><strong>Title</strong></th>
+    <th><strong>Access</strong></th>
+    <th><strong>Fiche utilisateur</strong></th>
+    <th><strong>Validate ?</strong></th>
+  </tr>
+  <% @projects.each do |project| %>
+    <tr>
+      <td><%= project.title %></td>
+      <td><%= link_to project.title , project.get_url %></td>
+      <td><%= project.users[0].f_name %> <%= project.users[0].l_name %></td>
+      <td><input type="button" value="validate" onclick="validate(<%= project.id %>, '<%= project.title %>')" /></td>
+    </tr>
+  <% end %>
+</table>

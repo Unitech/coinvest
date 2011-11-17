@@ -1,0 +1,81 @@
+
+<%= javascript_include_tag 'plugins/jquery.prettyPhoto.js' %>
+<%= stylesheet_link_tag  'plugins/prettyPhoto.css' %>
+
+<script>
+  $().ready(function() {
+  $('.play-you').each(function() {
+  $(this).prettyPhoto({animation_speed:'fast', theme : 'dark_rounded'});
+  });
+  });
+</script>
+
+<!-- Project listing part -->
+<div class="grid_12 list-content">
+  
+  <div class="clear"></div>
+
+  
+  <% @projects.each do |project| %>
+    
+    <a href="<%= project.get_url %>">
+      <div class="project-unity grid_5_75">
+	<div class="pu-image">
+	  <% if project.project_image? and project.you_tube == nil %>
+	    <%= image_tag project.project_image.url(:thumb) %>
+	  <% elsif project.project_image? %>
+	    <%- # YOUTUBE ENABLED %>
+	    
+	    <div class="play-you" href="<%= project.you_tube %>" title="<%= project.title %>">
+	      <div class="play" id="play">
+	      </div>
+	    </div>
+	    <%= image_tag project.project_image.url(:thumb) %>
+
+	  <% else %>
+	    <div class="empty-320">
+	      <div class="content">
+		320 x 180
+	      </div>
+	    </div>
+	  <% end %>
+	</div>
+	<div class="metadata">
+	  <div class="meta">
+	    <span class="pu-title">
+	      <%= project.title %>
+	    </span>
+	    <span class="pu-author">
+	      by <%= project.users[0].f_name %> <%= project.users[0].l_name %>
+	    </span>
+	    <span class="pu-time">
+	      <% if project.date_end_wish > Date.today %>
+		<%= image_tag 'time-icon.png' %> <%= time_ago_in_words(project.date_end_wish) %><span class="min"> restant</span>
+	      <% else %>
+		<span style="color : red;">Terminé</span>
+	      <% end %>
+	    </span>
+	  </div>
+	</div>
+      </div>
+    </a>
+  <% end %>
+
+
+  <!-- Bottom pagination -->
+  <div class="clear"></div>
+  <div class="project_pagination_bottom" id="project_pagination">
+    <%= will_paginate @articles %>
+  </div>
+</div>
+
+<!-- Menu -->
+<div class="grid_4 menu">
+  <div class="content-menu">
+    <h3>Selection</h3>
+    <%= render_navigation :level => 2..3, :expand_all => true %>
+    
+  </div>
+</div>
+
+

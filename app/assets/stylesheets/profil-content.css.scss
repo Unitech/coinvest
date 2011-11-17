@@ -1,0 +1,64 @@
+@import "main";
+
+.profil-content {
+    min-height : 500px;
+    margin-bottom : 20px;
+    @include nice_form();
+    .profil-internal-content {
+	margin-top : 20px;
+	margin-bottom : 20px;
+    }
+}
+
+
+ul.pagination-profil {
+    margin-top : 10px;
+    list-style: none;
+    font-size: 1.0em;
+    li {
+	margin: 0;
+	margin-top : 10px;
+	a {
+	    padding : 2px 5px 2px 5px;
+	    color : black;
+	    font-weight : bold;
+	    display: block;
+	    :hover{
+		color : black;
+		background-color : #EA8606;
+	    }
+	}
+	.selected {
+	    color : blue;
+	    @include rounded(5px);
+	}
+	ul.sub-profil {
+	    list-style: none;
+	    li {
+		margin : 0;
+		margin-left : 8px;
+		font-size : 0.9em;
+		.selected {
+		    border : none;
+		    background-color : none;
+		    color : red;
+		}
+	    }
+	}
+    }
+}
+
+.general-informations {
+    
+}
+
+.credits-historic {
+    table {
+	width : 100%;
+	text-align : center;
+	th {
+	    font-weight : bold;
+	    text-align : center;
+	}
+    }
+}

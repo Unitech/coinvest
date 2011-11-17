@@ -1,0 +1,20 @@
+<div class="project-min" url="<%= project.get_url %>">
+  <div class="title"><%= project.title %></div>
+  <div class="content-internal">
+    <div class="text-i">
+      <%= project.short_descr %>
+    </div>
+    <div class="image">
+      <% if project.project_image? %>
+	<%= image_tag project.project_image.url(:thumb), :size => '230x120' %>
+      <% else %>
+	<div class="empty-160">
+	  <div class="content">
+	    320 x 180
+	  </div>
+	</div>  
+      <% end %>
+    </div>
+  </div>
+  <div class="linkto"><a href="<%= project.get_url %>">Consulter le projet</a></div>
+</div>

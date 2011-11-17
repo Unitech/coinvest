@@ -1,0 +1,50 @@
+<div class="login_form">
+
+  <div class="login grid_5">
+    <h2>S'identifier</h2>
+    
+    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:class => 'form'}) do |f| %>
+      <p><%= f.label :email %>
+	<%= f.email_field :email %></p>
+      
+      <p><%= f.label :password %>
+	<%= f.password_field :password %></p>
+      
+      <% if devise_mapping.rememberable? -%>
+	<span class="simple-text">Se souvenir de mes informations ?</span> <%= f.check_box :remember_me %> 
+      <% end -%>
+      <br/>
+      <center>
+	<%= f.submit "S'indentifier" %>
+      </center>
+    <% end %>
+    <br/>
+    <center><label style="margin-bottom : 20px; margin-top : 10px;font-size : 18px;">Ou</label>
+      <label>connectez vous avec Facebook</label>
+      <a href="<%= user_omniauth_authorize_path(:facebook) %>">
+	<%= image_tag "login/connexion-avec-facebook.gif" %>
+      </a>
+    </center>
+  </div>
+
+  
+  <div class="grid_1 or">
+    OU
+  </div>
+
+  <div class="subscribe grid_5">
+    <h2>S'inscrire</h2>
+    <p>Si vous n'avez pas de compte, creez en un. Vous pourrez ainsi :</p>
+    <br/>
+    <ul>
+      <li><b>Fonder</b> une entreprise ou un projet à aucun frais</li>
+      <li><b>Découvrir</b> de nouvelles idées</li>
+      <li><b>Participer</b> à la fondation de projets de tous types</li>
+    </ul>
+    <center>
+      <a href="<%= new_user_registration_path %>"><input type="button" value="S'inscrire"></input></a>
+    </center>
+
+  </div>
+</div>
+

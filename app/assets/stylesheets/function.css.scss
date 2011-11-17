@@ -1,0 +1,104 @@
+
+  
+@mixin rounded($amount) {
+    -moz-border-radius: $amount;
+    -webkit-border-radius: $amount;
+    -khtml-border-radius: 4px; 
+    border-radius: $amount;
+}
+
+@mixin rounded_top($amount) {
+    -moz-border-radius-topleft: 5px;
+    -moz-border-radius-topright: 5px;
+    -moz-border-radius-bottomright: 0px;
+    -moz-border-radius-bottomleft: 0px;
+    -webkit-border-radius: 5px 5px 0px 0px;
+    border-radius: 5px 5px 0px 0px;
+}
+
+
+@mixin rounded_bottom($amount) {
+    -moz-border-radius-bottomleft: 5px;
+    -moz-border-radius-bottomright: 5px;
+    -moz-border-radius-topright: 0px;
+    -moz-border-radius-topleft: 0px;
+    -webkit-border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 5px 5px;
+}
+
+@mixin grey_bottom_line() {
+    margin-bottom : 10px;
+    border-bottom : 2px solid $color_grey;
+}
+
+@mixin normalize_list() {
+    ul {
+	list-style-type : none;
+	margin: 0; 
+	padding: 0;
+	li {
+	    margin: 0; 
+	    padding: 0;
+	}
+    }
+}
+
+@mixin nice_inputs() {
+    input[type=text], textarea, input[type=email], input[type=password] {
+    	padding : 5px;
+	border : 2px solid $color_grey;
+	@include rounded(4px);
+	box-shadow : inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+	-moz-box-shadow : inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+	-webkit-box-shadow : inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+    }	
+    input[type=submit], input[type=button] {
+	text-align : center;
+	padding : 3px 12px 3px 12px;
+	margin-top : 8px;
+	background-color : $black_grey;
+	color : $color_orange;
+	font-weight : bold;
+	font-size : 1.1em;
+	cursor : pointer;
+	border : 1px solid black;	    
+	@include rounded(3px);
+    }
+    
+    input[type=submit]:hover {   
+	background-color : $color_orange;
+	color : $black_grey;
+    }
+}
+
+@mixin nice_form() {
+    .form {
+	@include nice_inputs();
+	#mini {
+	    text-transform : none;
+	    font-size : 9px;
+	}
+	.field_with_errors {
+	    color : red;
+	}
+
+
+	p {margin:.5em 0;}	
+
+	label{
+	text-transform : uppercase;
+	font-weight : bold;
+	display:block;}	
+
+	.fields input, textarea{
+	    border:2px solid $color_grey;
+	    padding:5px;
+	    @include rounded(4px);
+	}
+
+	.submit_btn {
+	    margin-top : 20px;
+	}
+    }
+
+}

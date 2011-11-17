@@ -1,0 +1,33 @@
+<h1>Report de bugs</h1>
+
+<%= link_to "<<< Back", admin_actions_index_path %>
+<br/>
+
+
+<center><%= link_to 'Ajouter un BUG', new_bug_path %></center>
+<br/>
+<table border="1" style="width : 100%">
+  <tr>
+    <th>Titre</th>
+    <th>Détail</th>
+    <th>Bug fixé ?</th>
+    <th>Action</th>
+    <th>Action</th>
+    <th>Action</th>
+  </tr>
+
+<% @bugs.each do |bug| %>
+  <tr>
+    <td><%= bug.title %></td>
+    <td><%= bug.content %></td>
+    <td><%= raw bug.finished ? '<span style="color : green;font-weight : bold;">OUI</span>':'<span style="color : red; font-weight : bold;">NON</span>' %></td>
+    <td><%= link_to 'Show', bug %></td>
+    <td><%= link_to 'Edit', edit_bug_path(bug) %></td>
+    <td><%= link_to 'Destroy', bug, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<center><%= link_to 'Ajouter un BUG', new_bug_path %></center>

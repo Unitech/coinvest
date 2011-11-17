@@ -1,0 +1,4 @@
+#!/bin/bash
+
+rm public/assets/*
+bundle exec rake assets:precompile

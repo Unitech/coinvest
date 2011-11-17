@@ -1,0 +1,77 @@
+// For showing project
+$(document).ready(function(){
+    var $tabs = $('.show-project').tabs();
+    
+    $tabs.tabs('select', 0);
+
+    // Progressbar
+    $('.progressbar', '.show').each(function(){
+	$(this).progressbar({value : 59});
+    });
+    
+
+    $('#submit-for-validation').click(function(e) {
+	e.preventDefault();
+	var id = $('.show-project').attr('id')
+	$.ajax({
+	    type : "POST",
+	    url : '/bac_a_sable/edit/submit_project_to_admin',
+	    data : {
+		'id' : id,
+		'authenticity_token' : _token
+	    },
+	    success : function(data) {
+		window.location.reload();
+	    }
+	});
+    });
+
+    // Checkbox clicking (checking + unique choice)
+    $('.each-counter').each(function() {
+
+	$(this).click(function(e) {
+	    e.preventDefault();
+
+	    (function deselectAll() {
+		$('.each-counter').each(function() {
+		    $(this).find(':input').attr('checked', false);
+		});
+	    })();
+
+	    if($(this).attr('remain') == 'none') {
+		notify('Pas de produit restant');
+	    }
+	    else {
+		$(this).find(':input').attr('checked', true);
+	    }
+	});
+
+    });
+
+    // Confirm button
+    $('.submit-btn').click(function(e) {
+	var f = 0;
+	var el;
+	var self = $(this);
+	//e.preventDefault();
+	$('.each-counter :input').each(function() {
+	    if ($(this).attr('checked') == 'checked') {
+		f = 1;
+		el = $(this);
+	    }
+	});
+	if (f == 0) {
+	    notify('Vous devez selectionner au moins un choix');
+	}
+	else {
+	    //el.attr('value');
+	    // Send ajax request 
+	    var url = self.attr('url') + '/' + el.attr('value');
+	    self.find('a').attr('href', url);
+	    
+	}
+    });
+
+    // Fusion button
+    //operation_pending.start();
+});

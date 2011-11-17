@@ -1,0 +1,56 @@
+
+<%= form_for(:project, :url => {:action => :create}) do |f| %>
+  <div class="spe_form">
+    <table>
+      <tr>
+	<th>
+	  <h3>Information générales sur votre projet</h3>
+	  <br/>
+	</th>
+      </tr>
+      <tr>
+	<th>
+	  <%= f.label :title, 'Titre', %>
+	</th>
+	<td>
+	  <%= f.text_field :title %>
+	</td>
+      </tr>
+      <tr>
+	<th>
+	  <%= f.label :wish_money, 'Argent voulu'%>
+	</th>
+	<td>
+	  <%= f.text_field :wish_money %>
+	</td>
+      </tr>
+      <tr>
+	<th>
+	  <%= f.label :min_money, 'Argent minimum' %>
+	</th>
+	<td>
+	  <%= f.text_field :min_money %>
+	</td>
+      </tr>
+      
+            <tr>
+	<th>
+	  <%= f.check_box :personalized_reward %>
+	</th>
+	<td>Je souhaite recevoir <b>les actus de Coinvest</b></td>
+      </tr>
+      <tr>
+	<th>
+	  <%= f.check_box :capital_stock_type %>
+	</th>
+	<td>Je souhaite recevoir <b>les actus de Coinvest</b></td>
+      </tr>
+
+    </table>
+    <br/>
+    <p><%= f.submit "Envoyer !" %></p>
+<% end %>
+</div>
+
+
+

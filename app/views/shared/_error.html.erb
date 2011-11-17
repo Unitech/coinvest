@@ -1,0 +1,10 @@
+<% if object and object.errors.size > 0 %>
+  <div id="errorExplanation" class="container_4">
+    <h4><%= pluralize(object.errors.size, "erreur") %> sont présententes dans ce formulaire !</h4>
+    <ul>
+      <% object.errors.messages.each do |msg| %>
+	<li><%= msg[1][0] %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>

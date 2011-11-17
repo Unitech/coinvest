@@ -1,0 +1,27 @@
+<%= form_for(:project, :url => {:action => :create}, :html => {:class => 'form', :multipart => true}) do |f| %>
+  <%= render :partial => "shared/error", :locals => {:object => @project } %>
+  <fieldset>
+    <div class="fields">
+      <p>
+	<%= f.label :title, 'Titre'%>
+	<%= f.text_field :title, :size => 70, "original-title" => 'Indiquez un titre court' %>
+      </p>
+      <p>
+	<label for="project_short_descr">Description courte <span id="mini">(max 140 caractères)</span></label>
+	<%= f.text_area :short_descr, :rows => 5, :cols => 69,  "original-title" => 'Cette description apparaîtra en première page.' %>
+      </p>
+      <p>
+	<%= f.label :wish_money, 'Combien d\'argent voulez-vous collecter ?'%>
+	<%= f.text_field :wish_money , :size => 12, "original-title" => 'Combien de fonds aurez-vous besoin ?'%> €
+      </p>
+      <p>
+	<%= f.label :date_end_wish, 'Date de fin' %>
+	<%= f.text_field :date_end_wish, :size => 12, :id => 'date-picker', "original-title" => 'À quelle date pensez vous avoir terminé vos récoltes de fonds ? ' %>
+      </p>
+      <%= f.hidden_field :id, :value => project_type %>
+
+    </div>
+    
+    <%= image_submit_tag 'bac/next.png', :class => 'submit_btn' %>
+  </fieldset>
+<% end %>

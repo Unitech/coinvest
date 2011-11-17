@@ -1,0 +1,14 @@
+<h3>Mes projets</h3>
+
+<div class="listing-proj">
+  <% @project.each do |p| %>
+    <div class="proj">
+      <div class="title">
+	<%= p.title %>
+      </div>
+      <div class="edit">
+	<%= link_to "Edit", edit_show_path(:id => p.id, :proj_name => p.title) %>
+      </div>      
+    </div>
+  <% end %>
+</div>

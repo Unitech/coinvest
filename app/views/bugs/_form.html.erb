@@ -1,0 +1,29 @@
+<%= form_for(@bug) do |f| %>
+  <% if @bug.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@bug.errors.count, "error") %> prohibited this bug from being saved:</h2>
+
+      <ul>
+      <% @bug.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :content %><br />
+    <%= f.text_area :content %>
+  </div>
+  <div class="field">
+    <%= f.label :finished %><br />
+    <%= f.check_box :finished %>
+  </div>
+  <div class="actions">
+    <%= f.submit "Add modification" %>
+  </div>
+<% end %>
