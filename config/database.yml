@@ -9,12 +9,6 @@ development:
   pool: 5
   timeout: 5000
 
-# development:
-#   adapter: mysql2  # Rails 3.x uses the mysql2 adapter
-#   database: emacs_vs
-#   pool: 5
-#   username: root
-#   password: t32xor
     
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -30,5 +24,5 @@ production:
   database: coinvest
   pool: 5
   username: root
-  password: t934b61
+  password: xxxxx
 
