@@ -1,10 +1,15 @@
 Coinvest::Application.routes.draw do
 
-  
+  #
+  # Ressources
+  #
+  resources :bugs
+  resources :comments
+
   #
   # Admin
   #
-  scope :controller => :admin_actions, :path => '/admin_actions', :as => :admin_actions do 
+  scope :controller => :admin_actions, :path => '/backoffice', :as => :admin_actions do 
     get "projets_en_attente" => :projets_en_attente, :as => :projets_en_attente
     get "profils_utilisateur" => :profils_utilisateur, :as => :profils_utilisateur
     get "profil/:user_id" => :profil_specifique, :as => :profil_spe
@@ -15,10 +20,6 @@ Coinvest::Application.routes.draw do
   # Rails admin
   #
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
-  #
-  # Bugs
-  #
-  resources :bugs
 
   #
   # Fb omniauth

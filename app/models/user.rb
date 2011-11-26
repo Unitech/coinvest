@@ -1,37 +1,67 @@
 # -*- coding: utf-8 -*-
 class User < ActiveRecord::Base
-  # Type of user
-  USER_TYPE = ['investor', 'entrepreneur']
-
+  #
+  # Before saving to DB set default values (credits)
+  #
   before_create :default_values
+
+  #
+  # Relation
+  #
   has_many :project_user
   has_many :projects, :through => :project_user
-
-  has_many :counterpart_users
-  
+  has_many :counterpart_users  
   has_many :credit_historics
-  # RAILS_ADMIN
-  #has_many :counterparts, :through => :counterpart_user
+  has_many :comments
 
-  # Include default devise modules. Others available are:
-  # :token_authenticatable, :encryptable, :confirmable, :lockable, :timeoutable and :omniauthable
+  #
+  # Devise configuration
+  #
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
-
-  # Setup accessible (or protected) attributes for your model
+  
+  #
+  # Set accessible fields 
+  #
   attr_accessible :email, :password, :password_confirmation, :remember_me, :user_type,
-  :f_name, :l_name, :birth_date, :birth_place, :nationality,
-  :address, :postal_code, :city, :phone_number, :web_site,
-  :photo_path, :receive_newsletter, :projects, :sex, :country, :credits
-
+                  :f_name, :l_name, :birth_date, :birth_place, :nationality,
+                  :address, :postal_code, :city, :phone_number, :web_site,
+                  :photo_path, :receive_newsletter, :projects, :sex, :country, :credits
+  
+  #
+  # Set virtual field
+  #
   attr_accessor :login
   
+  #
+  # Validations
+  #
   validates_presence_of :f_name, :message => 'Prenom obligatoire'
   validates_presence_of :l_name, :message => 'Nom obligatoire'
-  #validates_inclusion_of :user_type, :in => USER_TYPE
   validates_uniqueness_of :email, :message => 'L\'adresse mail est déjà prise'
 
 
+  #
+  # Some helpers
+  #
+  def remove_credits(credits)
+    @credits = self.credits - credits
+    if @credits < 0
+      return false
+    end
+    self.update_attributes(:credits => @credits)
+    return true
+  end
+
+  def add_credits(credits)
+    @credits = self.credits + credits
+    self.update_attributes(:credits => @credits)
+  end
+  
+
+  #
+  # Facebook AUTH
+  #
   def self.find_for_facebook_oauth(access_token, signed_in_resource=nil)
     data = access_token['extra']['user_hash']
 
@@ -49,21 +79,10 @@ class User < ActiveRecord::Base
       end
     end
   end
-
-  def remove_credits(credits)
-    @credits = self.credits - credits
-    if @credits < 0
-      return false
-    end
-    self.update_attributes(:credits => @credits)
-    return true
-  end
-
-  def add_credits(credits)
-    @credits = self.credits + credits
-    self.update_attributes(:credits => @credits)
-  end
-  
+ 
+  #
+  # Private methods
+  #
   protected
   def default_values
     self.credits = 0

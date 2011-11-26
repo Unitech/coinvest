@@ -1,24 +1,19 @@
 
 <!-- Contenu des tabs -->
 <div id="tabs-1">
-  <% if user_is_owner? and defined? @editable and @project.submited == false %>
+  <% if user_is_owner? and defined? @editable %>
     <%= link_to 'Editer', edit_one_project_path, :class => 'edit_link' %>
   <% end %>
 
   <div class="image-proj">
     <% if @project.project_image? and @project.you_tube == nil %>
+      <%# NO YOU UTUBE VIDEO ? %>
       <%= image_tag @project.project_image.url(:medium) %>
     <% elsif @project.project_image? %>
-      <%- # YOUTUBE ENABLED %>
-      <a href="#t" id="video">
-	<div id="play">
-	</div>
-	<%= image_tag @project.project_image.url(:medium) %>
-	
+      <%# YOUTUBE %>
+      <a href="#t" id="video"><div id="play"></div>
+	<%= image_tag @project.project_image.url(:medium) %>	
       </a>
-      <style>
-	
-      </style>
       <script>
 	function play(id)
     {
@@ -33,11 +28,9 @@
 
        return html;
     };
-
-
 	$().ready(function() {
 	$('#video').click(function() {
-	$(this).html(play('SPI8niO08wQ'));
+	$(this).html(play('<%= @project.you_tube.split('?v=')[1] %>'));
 	});
 	});
       </script>
@@ -73,19 +66,62 @@
 <div id="tabs-2">
   <p><h2>Listing des investisseurs</h2></p>
   
-  <ul>
-    <% if @users.present? %>
+  <% if @users.present? %>
+    <ul>
       <% @users.each do |u| %>
 	<li>
 	  <%= u.f_name + ' ' + u.l_name %>
 	</li>
       <% end %>
-    <% end %>
-  </ul>
+    </ul>
+  <% else %>
+    <center>	
+      <i>Il n'y pas d'investisseurs pour le moment</i>
+    </center>
+  <% end %>
 </div>
 
 <div id="tabs-3">
   <p><h2>Listing des commentaires</h2></p>
+
+  <% if @comments.present? %>
+    <ul>
+      <% @comments.each do |c| %>
+	<li>
+	  Par <%= c.user.f_name + ' ' + c.user.l_name %> :<br/>
+	  <%= c.content %>
+	</li>
+      <% end %>
+    </ul>
+  <% else %>
+    <center>	
+      <i>Il n'y pas de commentaires pour le moment</i>
+    </center>
+  <% end %>
+
+  <p><h2>Poster un commentaire</h2></p>
+  
+  <%= form_for(@comment) do |f| %>
+    <% if @comment.errors.any? %>
+      <div id="error_explanation">
+	<h2><%= pluralize(@comment.errors.count, "error") %> prohibited this comment from being saved:</h2>
+	<ul>
+	  <% @comment.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+	  <% end %>
+	</ul>
+      </div>
+    <% end %>
+    
+    <div class="field">
+      <%= f.text_area :content, :size => '75x5' %>
+    </div>
+    <%= f.hidden_field :project, :value => @project.id %>
+    <div class="actions">
+      <%= f.submit :value => 'Envoyer' %>
+    </div>
+  <% end %>
+
 </div>
 
 <% if @project.blog_enabled == true %>

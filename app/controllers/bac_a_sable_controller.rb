@@ -5,13 +5,27 @@ require 'uri'
 class BacASableController < ApplicationController
   before_filter :authenticate_user!, :except => ['choice', 'preview']
 
+  #
+  # To show editable project
+  # 
+  def show 
+    @project = Project.where(:title => params[:proj_name], :id => params[:id]).first
+    if user_is_owner_of_the_project(@project) == false
+      redirect_to root_path
+      return 
+    end
+    @comment = Comment.new
+    # It impact on tab_content.html.erb
+    @editable = true
+    render :layout => 'show_project_layout'
+    return 
+  end
 
   #
   # Pour la page d'édition de projet
   # 
   def edit_project
     @project = Project.where(:id => params[:id]).first
- 
     if user_is_owner_of_the_project(@project) == true
       render :layout => 'application_edit_project'
       return
@@ -118,25 +132,6 @@ class BacASableController < ApplicationController
       render :action => "edit_project"
     end                               
   end
-
-  def show 
-    @project = Project.where(:title => params[:proj_name], :id => params[:id]).first
-    if user_is_owner_of_the_project(@project) == false
-      redirect_to root_path
-      return 
-    end
-    # It impact on tab_content.html.erb
-    @editable = true
-    render :layout => 'show_project_layout'
-    return 
-  end
-
-
-
-
-
-
-
 
   #
   # Projet creation Step_1

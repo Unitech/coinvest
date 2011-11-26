@@ -1,4 +1,4 @@
-  <% if user_is_owner? and @project.personalized_reward == true and defined? @editable and @project.submited == false %>
+  <% if user_is_owner? and @project.personalized_reward == true and defined? @editable %>
     <%= link_to 'Editer', edit_counterparts_path, :class => 'edit_link' %>
   <% end %>
 

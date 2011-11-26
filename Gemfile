@@ -7,20 +7,22 @@ gem 'jquery-rails'
 gem 'sass-rails', git: 'https://github.com/rails/sass-rails.git', branch: '3-1-stable'	
 gem 'uglifier'
 
-
 gem 'capistrano'
 
-gem 'omniauth', '>= 0.2.6'
-gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
+gem 'devise', '~> 1.4.4'
+#gem 'oa-core'
+gem 'omniauth', '~> 0.3.2'
+
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
+
 
 gem 'faker'
 
 gem 'twitter'
 
-gem 'will_paginate'
+gem 'will_paginate', '3.0.0'
 gem 'sqlite3'
-gem 'simple-navigation'
+gem 'simple-navigation', '3.5.0'
 
 gem 'paperclip', '~> 2.3'
 gem 'mysql2', '0.3.6'

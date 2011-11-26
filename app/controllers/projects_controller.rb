@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 class ProjectsController < ApplicationController
   before_filter :authenticate_user!, :only => ['new', 'edit']
-  # GET /projects
-  # GET /projects.json
+
+  #
+  # Project listing (/projects)
+  #
   def index
     ord = 'created_at DESC'
     cond = ['validated = ?', true]
@@ -20,7 +22,7 @@ class ProjectsController < ApplicationController
     when 'finished'
       cond = ['validated = ? and date_end_wish < ? ', true, Date.today]
     end
-
+    
     case params[:sort]
     when 'finishing'
       ord = 'date_end_wish ASC'
@@ -29,30 +31,26 @@ class ProjectsController < ApplicationController
     when 'recent'
       ord = 'date_end_wish DESC'
     end
-
-
+    
     @projects = Project.paginate :page => params[:page], :per_page => 6, :order => ord, :conditions => cond
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @projects }
-    end
   end
 
+  #
+  # Project details (/project/my_project_title)
+  #
   def show
     @project = Project.find_by_title(params[:proj_name])
-    
-    @users = []
-
-    @project.counterparts.each do |c| 
-      c.counterpart_users.each do |g|
-        @users << User.find(g.user_id)
-      end
-    end
-    # @investor = @project.get_investor
+    @comment = Comment.new
+    # Get all investor
+    @users = @project.investor
+    # Get all comments
+    @comments = @project.comments
     render :layout => 'show_project_layout'
   end
 
+  #
+  # Counterpart buying
+  #
   def invest
   end
 
@@ -81,4 +79,5 @@ class ProjectsController < ApplicationController
       redirect_to :buy_counterpart, :notice => 'Vous n\'avez pas assez de crédits'
     end    
   end
+  
 end

@@ -1,21 +1,24 @@
 # Coinvest
 
+## Install
 
-- Modif des icone de lecture
-- Crade dans projects_controlle#Show
-- Listing investisseurs ok
-- Logic pour les counterparts
+    bundle install
+    bundle exec rake db:migrate
+    bundle exec rake db:seed
+    google-chrome http://localhost:3000/
 
-## Security check
-- Fb login/sign, search by mail in omniauth => not safe
-=> Grave ! Très graveeeeeeeeee
-- Securiser /admin + /admin-actions
-- Securiser bugs
 
-## func
+## Liens à connaitre
 
-- Implementer les enchere (business logic)
-- Implementer le calcul de % dans show (montrer un proj + list des projets)
-- Historique quand achat
-- Tesxt field pourcentage
-- Bug display projets home page
+### Backoffice
+
+    /backoffice
+
+Gestion administrative
+
+## Auth avec Facebook
+
+Fonctionne mais à mettre en oeuvre en production (vraie URL...)
+
+- Register l'app sur [https://developers.facebook.com/apps](https://developers.facebook.com/apps)
+
