@@ -23,7 +23,7 @@
     <td><%= raw bug.finished ? '<span style="color : green;font-weight : bold;">OUI</span>':'<span style="color : red; font-weight : bold;">NON</span>' %></td>
     <td><%= link_to 'Show', bug %></td>
     <td><%= link_to 'Edit', edit_bug_path(bug) %></td>
-    <td><%= link_to 'Destroy', bug, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', bug, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>

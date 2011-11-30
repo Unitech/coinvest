@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @comments }
+      format.json { render :json => @comments }
     end
   end
 
@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @comment }
+      format.json { render :json => @comment }
     end
   end
 
@@ -29,7 +29,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @comment }
+      format.json { render :json => @comment }
     end
   end
 
@@ -46,7 +46,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if params[:comment][:project].empty?
-      render action: "new"
+      render :action => "new"
       return 
     end
     @comment.project = Project.find(params[:comment][:project])
@@ -66,11 +66,11 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.update_attributes(params[:comment])
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
+        format.html { redirect_to @comment, :notice => 'Comment was successfully updated.' }
         format.json { head :ok }
       else
-        format.html { render action: "edit" }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
+        format.html { render :action => "edit" }
+        format.json { render :json => @comment.errors, :status => :unprocessable_entity }
       end
     end
   end

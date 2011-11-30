@@ -160,7 +160,7 @@ class BacASableController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @project }
+      format.json { render :json => @project }
     end
   end
 
@@ -182,22 +182,22 @@ class BacASableController < ApplicationController
       if @project.save
         if @project_user.save
           format.html { redirect_to edit_show_path(:proj_name => @project.title, :id => @project.id) }
-          format.json { render json: @project, status: :created, location: @project }
+          format.json { render :json => @project, :status => :created, :location => @project }
         end
 
         if params[:project][:id] == "shares"
-          format.html { render action: "new_enterprise" }
+          format.html { render :action => "new_enterprise" }
         else
-          format.html { render action: "new_project" }
+          format.html { render :action => "new_project" }
         end
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        format.json { render :json => @project.errors, :status => :unprocessable_entity }
       else
         if params[:project][:id] == "shares"
-          format.html { render action: "new_enterprise" }
+          format.html { render :action => "new_enterprise" }
         else
-          format.html { render action: "new_project" }
+          format.html { render :action => "new_project" }
         end
-        format.json { render json: @project.errors, status: :unprocessable_entity }
+        format.json { render :json => @project.errors, :status => :unprocessable_entity }
       end
     end
   end
